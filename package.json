@@ -1,0 +1,26 @@
+{
+  "name": "alone",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "async": "^2.5.0",
+    "body-parser": "~1.18.2",
+    "bower": "^1.8.2",
+    "cheerio": "^1.0.0-rc.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "ejs": "~2.5.7",
+    "express": "~4.15.5",
+    "express-session": "^1.15.6",
+    "install": "^0.10.1",
+    "mongoose": "^4.13.0",
+    "morgan": "~1.9.0",
+    "opn": "^5.1.0",
+    "serve-favicon": "~2.4.5",
+    "socket.io": "^2.0.4",
+    "superagent": "^3.8.0"
+  }
+}
