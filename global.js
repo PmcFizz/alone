@@ -2,8 +2,8 @@
  * Created by pangmengchen on 12/4/16.
  */
 global.BASEDIR = __dirname;
-global.CONTROLLERS = BASEDIR + '/src/controllers';
-global.MODELS = BASEDIR + '/src/models';
+global.CONTROLLERS = BASEDIR + '/src/controller';
+global.MODELS = BASEDIR + '/src/model';
 global.PROXY = BASEDIR + '/src/proxy';
 
 //global return success

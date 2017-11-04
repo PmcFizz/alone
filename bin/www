@@ -16,12 +16,23 @@ var opn=require('opn');
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-opn("http://localhost:" + port);
+opn(`http://localhost:${port}`);
 /**
  * Create HTTP server.
  */
 
 var server = http.createServer(app);
+var socket = require('socket.io')(server);
+
+/**
+ * socket 事件监听
+ */
+socket.on('connection', function (client) {
+    client.on('start', function (msg) {
+        socket.emit('start', msg);
+    });
+});
+
 
 /**
  * Listen on provided port, on all network interfaces.

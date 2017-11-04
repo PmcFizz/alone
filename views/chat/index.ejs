@@ -1,51 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>主页</title>
+  <title>聊天室</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css"/>
   <link rel='stylesheet' href='/stylesheets/style.css'/>
-  <base href="" target="_blank">
 </head>
 <body>
-
-<div class="container" id="main-contain">
-  <h1 class="text-center bg-success" style="border: 1px solid #ddd;color: #CCCC00;padding: 5px;border-radius:2px">积跬步,至千里.集小流,成江河</h1>
-
-  <div class="panel panel-primary">
-    <div class="panel-body text-center" style="margin: auto 0px">
-      <ul class="list-group col-md-12" style="max-height: 400px; text-align: center">
-        <li class="list-group-item col-md-3 menu-list-item text-center" v-for="item in menu"><a :href="item.href" >{{item.name}}</a></li>
+<div class="container">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h4>聊天室</h4>
+    </div>
+    <div class="panel-body">
+      <ul class="list-group" id="message" style="min-height: 300px">
       </ul>
+      <div class="form-group">
+        <div class="col-md-4">
+          <div class="input-group">
+            <input class="form-control" id="say" type="text" placeholder="Type here">
+            <div class="input-group-btn">
+              <button class="btn btn-success" type="button" id="send">发送</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
 </div>
+<script src="/libs/socket.io-client/dist/socket.io.js"></script>
+<script src="/libs/jquery/dist/jquery.min.js"></script>
+<script src="/chat/index.js"></script>
 
-<script src="libs/vue/dist/vue.min.js"></script>
-<script>
-  var bodyVue=new Vue({
-      el:"#main-contain",
-      data:{
-          menu:[
-              {name:'目录展示',href:'/index',des:'',className:'',flag:''},
-              {name:'聊天室',href:'/chat/index',des:'',className:'',flag:''},
-              {name:'抓包',href:'/spider/index',des:'',className:'',flag:''},
-              {name:'列表分页',href:'/list/index',des:'',className:'',flag:''},
-              {name:'地图',href:'/map/index',des:'',className:'',flag:''},
-              {name:'Echart',href:'/echart/index',des:'',className:'',flag:''},
-              {name:'Canvas',href:'/canvase/index',des:'',className:'',flag:''},
-              {name:'Mongodb',href:'/mongodb/index',des:'',className:'',flag:''},
-              {name:'游戏',href:'',des:'/game/index',className:'',flag:''},
-              {name:'数据结构',href:'/data-structure/index',des:'',className:'',flag:''},
-              {name:'算法题',href:'/algorithm/index',des:'',className:'',flag:''},
-              {name:'设计模式',href:'/design-pattern/index',des:'',className:'',flag:''},
-              {name:'ES6',href:'/es6/index',des:'',className:'',flag:''},
-              {name:'VUE',href:'/vue/index',des:'',className:'',flag:''},
-              {name:'Music',href:'/music/index',des:'',className:'',flag:''}]
-      }
-  })
-
-</script>
 </body>
 </html>

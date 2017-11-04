@@ -1,51 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>主页</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css"/>
-  <link rel='stylesheet' href='/stylesheets/style.css'/>
-  <base href="" target="_blank">
+  <title>我的Canvas画板</title>
+  <style type="text/css">
+    html,body{
+      height: 100%;
+      width: 100%;
+      padding: 0;
+      margin:0;
+    }
+    .righter{
+      width: 80px;
+      height: 100%;
+      position: fixed;
+      right: 0;
+      background-color: #ffeb89;
+      top:0;
+    }
+    .righter .menuul{
+      padding: 0;
+      margin: 0 auto;
+      list-style: none;
+      text-align: center;
+    }
+    .righter .menuul:first-child{
+      margin-top: 20px
+    }
+    .righter .menuul li{
+      height: 40px;
+      line-height: 40px;
+      margin-top: 10px;
+      background-color:white;
+      color: black;
+      border-radius: 4px;
+      cursor:context-menu;
+      user-select:none;
+    }
+    .righter .menuul li:hover{
+      background-color:black;
+      color: white;
+    }
+  </style>
 </head>
 <body>
+<canvas height="100" width="100" id="mycan"></canvas>
 
-<div class="container" id="main-contain">
-  <h1 class="text-center bg-success" style="border: 1px solid #ddd;color: #CCCC00;padding: 5px;border-radius:2px">积跬步,至千里.集小流,成江河</h1>
-
-  <div class="panel panel-primary">
-    <div class="panel-body text-center" style="margin: auto 0px">
-      <ul class="list-group col-md-12" style="max-height: 400px; text-align: center">
-        <li class="list-group-item col-md-3 menu-list-item text-center" v-for="item in menu"><a :href="item.href" >{{item.name}}</a></li>
-      </ul>
-    </div>
-  </div>
+<div class="righter">
+  <ul class="menuul">
+    <li class="muen_item" data-type="changetheme" id="theme">刻舟求剑</li>
+    <li class="muen_item" data-type="reset">清    屏</li>
+    <li class="muen_item" data-type="saveimg">保存图片</li>
+    <!-- <li class="muen_item" data-type="rotate">旋转90°</li> -->
+    <li class="muen_item" data-type="changebg">改变背景</li>
+  </ul>
 </div>
-
-<script src="libs/vue/dist/vue.min.js"></script>
-<script>
-  var bodyVue=new Vue({
-      el:"#main-contain",
-      data:{
-          menu:[
-              {name:'目录展示',href:'/index',des:'',className:'',flag:''},
-              {name:'聊天室',href:'/chat/index',des:'',className:'',flag:''},
-              {name:'抓包',href:'/spider/index',des:'',className:'',flag:''},
-              {name:'列表分页',href:'/list/index',des:'',className:'',flag:''},
-              {name:'地图',href:'/map/index',des:'',className:'',flag:''},
-              {name:'Echart',href:'/echart/index',des:'',className:'',flag:''},
-              {name:'Canvas',href:'/canvase/index',des:'',className:'',flag:''},
-              {name:'Mongodb',href:'/mongodb/index',des:'',className:'',flag:''},
-              {name:'游戏',href:'',des:'/game/index',className:'',flag:''},
-              {name:'数据结构',href:'/data-structure/index',des:'',className:'',flag:''},
-              {name:'算法题',href:'/algorithm/index',des:'',className:'',flag:''},
-              {name:'设计模式',href:'/design-pattern/index',des:'',className:'',flag:''},
-              {name:'ES6',href:'/es6/index',des:'',className:'',flag:''},
-              {name:'VUE',href:'/vue/index',des:'',className:'',flag:''},
-              {name:'Music',href:'/music/index',des:'',className:'',flag:''}]
-      }
-  })
-
-</script>
+<script type="text/javascript" src="/canvas/index.js"></script>
 </body>
 </html>
