@@ -3,15 +3,18 @@
  */
 (function () {
     function startGetData() {
-        var targetHref = $("#").val();
-        var selector = $("#").val();
+        var targetHref = $("#target_href").val();
+        var selector = $("#selector").val();
         $.ajax({
             type: "post",
-            url: '',
-            data: {},
+            url: '/start-get',
+            data: {
+                target_href:targetHref,
+                selector:selector
+            },
             dataType: "json",
             success: function (res) {
-
+                console.log(res);
             }
 
         })
