@@ -1,50 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>主页</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css"/>
-  <link rel='stylesheet' href='/stylesheets/style.css'/>
-  <base href="" target="_blank">
+    <title>Nodejs抓包</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css"/>
 </head>
 <body>
 
 <div class="container" id="main-contain">
-  <h1 class="text-center bg-success" style="border: 1px solid #ddd;color: #CCCC00;padding: 5px;border-radius:2px">积跬步,至千里.集小流,成江河</h1>
+    <div class="panel panel-warning" style="margin-top: 20px">
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <div class="col-md-6">
+                    <label class="col-md-4 control-label">目标地址:</label>
+                    <div class="col-md-6">
+                        <input class="form-control" type="text">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="col-md-4 control-label">选择器:</label>
+                    <div class="col-md-6">
+                        <input class="form-control" type="text">
+                    </div>
+                </div>
+            </form>
+            <div class="text-center col-md-12" style="margin-top: 100px;margin-bottom: 20px">
+                <button class="btn btn-md btn-success">开始抓取数据</button>
+            </div>
 
-  <div class="panel panel-primary">
-    <div class="panel-body text-center" style="margin: auto 0px">
-      <ul class="list-group col-md-12" style="max-height: 400px; text-align: center">
-        <li class="list-group-item col-md-3 menu-list-item text-center" v-for="item in menu"><a :href="item.href" >{{item.name}}</a></li>
-      </ul>
+            <div class="panel panel-success">
+                <div class="panel-body">
+                    <table class="table table-striped table-bordered table-hover dataTable no-footer" width="100%">
+                        <thead>
+                        <tr class="text-center">
+                            <th>诗id</th>
+                            <th>名字</th>
+                            <th>地址</th>
+                            <th>作者</th>
+                            <th>朝代</th>
+                            <th>标签</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+        </div>
     </div>
-  </div>
-</div>
 
+</div>
 <script src="libs/vue/dist/vue.min.js"></script>
+<script type="text/javascript" src="/libs/jquery/dist/jquery.min.js"></script>
 <script>
-  var bodyVue=new Vue({
-      el:"#main-contain",
-      data:{
-          menu:[
-              {name:'目录展示',href:'/index',des:'',className:'',flag:''},
-              {name:'聊天室',href:'/chat/index',des:'',className:'',flag:''},
-              {name:'抓包',href:'/spider/index',des:'',className:'',flag:''},
-              {name:'列表分页',href:'/list/index',des:'',className:'',flag:''},
-              {name:'地图',href:'/map/index',des:'',className:'',flag:''},
-              {name:'Echart',href:'/echart/index',des:'',className:'',flag:''},
-              {name:'Canvas',href:'/canvase/index',des:'',className:'',flag:''},
-              {name:'Mongodb',href:'/mongodb/index',des:'',className:'',flag:''},
-              {name:'游戏',href:'',des:'/game/index',className:'',flag:''},
-              {name:'数据结构',href:'/data-structure/index',des:'',className:'',flag:''},
-              {name:'算法题',href:'/algorithm/index',des:'',className:'',flag:''},
-              {name:'设计模式',href:'/design-pattern/index',des:'',className:'',flag:''},
-              {name:'ES6',href:'/es6/index',des:'',className:'',flag:''},
-              {name:'VUE',href:'/vue/index',des:'',className:'',flag:''},
-              {name:'Music',href:'/music/index',des:'',className:'',flag:''}]
-      }
-  })
 
 </script>
 </body>
