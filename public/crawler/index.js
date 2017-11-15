@@ -16,7 +16,6 @@
             success: function (res) {
                 console.log(res);
             }
-
         })
     };
     $("#start").click(startGetData)

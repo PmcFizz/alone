@@ -24,7 +24,14 @@ const Poetry = mongoose.model('poetry', new Schema({
     content: String,    //诗的内容
     dynasty: String,    //朝代
     tag: Array      //标签
-}))
+}));
+
+const Lnglat = mongoose.model('lnglat', new Schema({
+    name: String,
+    lng: Number,
+    lat: Number,
+    createTime: Date
+}));
 
 
 // 项目目录
@@ -133,8 +140,8 @@ let mainFun = (target_url, selector) => {
             for (let i = 0; i < selectorArr.length; i++) {
                 let item = $(selectorArr[i]);
                 let href = item.attr('href');
-                let title = item.text();
-                let author = item.parent().text();
+                let title = item.text() || ""
+                let author = item.parent().text() || "";
                 let tag = ['唐朝', '唐诗三百首', '唐代'];
                 let dynasty = '唐朝';
                 if (href.indexOf('http://') !== 0) {
@@ -145,7 +152,7 @@ let mainFun = (target_url, selector) => {
                 console.log("已保存到数据库^_^");
             }
 
-            async.mapLimit(poetryArr, 5, 10, function (item, topCb) {
+            async.mapLimit(poetryArr, 5, function (item, topCb) {
                 let tag = ['唐朝', '唐诗三百首', '唐代'];
                 let dynasty = '唐朝';
                 let title = item.title;
@@ -175,12 +182,32 @@ router.post('/start-get', function (req, res) {
     var target_href = req.body.target_href;
     var selector = req.body.selector;
     var obj = mainFun(target_href, selector);
-    if (obj.err) {
+    if (obj && obj.err) {
         return returnFAIL(res, err);
     } else {
-        return returnSUCCESS(res, {errmsg: ok})
+        return returnSUCCESS(res, {errmsg: 'ok'})
     }
 });
+
+// 获取经纬度
+router.post('/get-my-ways', function (req, res) {
+    var data = [{lan_lat: [115.323217, 34.459577], name: '宁陵'}, {lan_lat: [102.421372, 23.368866], name: '红河'}];
+    return returnSUCCESS(res, data);
+})
+
+// 保存标记的点
+router.post('/save-position', function (req, res) {
+    var lng = req.body.lng;
+    var lat = req.body.lat;
+    let newLnglat = new Lnglat({
+        lng,
+        lat
+    })
+    newLnglat.save();
+    return returnSUCCESS(res, {errmsg: 'ok'});
+});
+
+
 
 //分页获取用户
 router.post('/user/queryByDataTable', function (req, res) {

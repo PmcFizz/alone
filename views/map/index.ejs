@@ -1,51 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+
 <head>
-  <title>主页</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css"/>
-  <link rel='stylesheet' href='/stylesheets/style.css'/>
-  <base href="" target="_blank">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>走过的路</title>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+    <script src="http://cache.amap.com/lbs/static/es5.min.js"></script>
+    <script src="http://webapi.amap.com/maps?v=1.4.1&key=d799a2887868628bf7782fcd6b2c0ed1&plugin=AMap.Autocomplete,AMap.Riding"></script>
 </head>
+
 <body>
-
-<div class="container" id="main-contain">
-  <h1 class="text-center bg-success" style="border: 1px solid #ddd;color: #CCCC00;padding: 5px;border-radius:2px">积跬步,至千里.集小流,成江河</h1>
-
-  <div class="panel panel-primary">
-    <div class="panel-body text-center" style="margin: auto 0px">
-      <ul class="list-group col-md-12" style="max-height: 400px; text-align: center">
-        <li class="list-group-item col-md-3 menu-list-item text-center" v-for="item in menu"><a :href="item.href" >{{item.name}}</a></li>
-      </ul>
-    </div>
-  </div>
+<div id="container"></div>
+<div id="tip"></div>
+<div id="myPageTop">
+    <table>
+        <tr>
+            <td>
+                <label>按关键字搜索：</label>
+            </td>
+            <td class="column2">
+                <label>左击获取经纬度：</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" placeholder="请输入关键字进行搜索" id="tipinput">
+            </td>
+            <td class="column2">
+                <input type="text" readonly="true" id="lnglat">
+            </td>
+        </tr>
+    </table>
 </div>
+<script src="/libs/jquery/dist/jquery.min.js"></script>
+<script src="/libs/socket.io-client/dist/socket.io.js"></script>
+<script src="//webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
+<script src="/map/index.js"></script>
 
-<script src="libs/vue/dist/vue.min.js"></script>
-<script>
-  var bodyVue=new Vue({
-      el:"#main-contain",
-      data:{
-          menu:[
-              {name:'目录展示',href:'/index',des:'',className:'',flag:''},
-              {name:'聊天室',href:'/chat/index',des:'',className:'',flag:''},
-              {name:'抓包',href:'/spider/index',des:'',className:'',flag:''},
-              {name:'列表分页',href:'/list/index',des:'',className:'',flag:''},
-              {name:'地图',href:'/map/index',des:'',className:'',flag:''},
-              {name:'Echart',href:'/echart/index',des:'',className:'',flag:''},
-              {name:'Canvas',href:'/canvase/index',des:'',className:'',flag:''},
-              {name:'Mongodb',href:'/mongodb/index',des:'',className:'',flag:''},
-              {name:'游戏',href:'',des:'/game/index',className:'',flag:''},
-              {name:'数据结构',href:'/data-structure/index',des:'',className:'',flag:''},
-              {name:'算法题',href:'/algorithm/index',des:'',className:'',flag:''},
-              {name:'设计模式',href:'/design-pattern/index',des:'',className:'',flag:''},
-              {name:'ES6',href:'/es6/index',des:'',className:'',flag:''},
-              {name:'VUE',href:'/vue/index',des:'',className:'',flag:''},
-              {name:'Music',href:'/music/index',des:'',className:'',flag:''}]
-      }
-  })
-
-</script>
 </body>
+
 </html>

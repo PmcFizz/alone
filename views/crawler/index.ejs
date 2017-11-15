@@ -11,14 +11,14 @@
 <div class="container" id="main-contain">
     <div class="panel panel-warning" style="margin-top: 20px">
         <div class="panel-body">
-            <form class="form-horizontal">
-                <div class="col-md-6">
+            <form class="form-horizontal" >
+                <div class="col-md-6" style="margin-top: 20px">
                     <label class="col-md-4 control-label">目标地址:</label>
                     <div class="col-md-6">
                         <input class="form-control" type="text" id="target_href">
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="margin-top: 20px">
                     <label class="col-md-4 control-label">选择器:</label>
                     <div class="col-md-6">
                         <input class="form-control" type="text" id="selector">
@@ -26,7 +26,7 @@
                 </div>
             </form>
             <div class="text-center col-md-12" style="margin-top: 100px;margin-bottom: 20px">
-                <button class="btn btn-md btn-success">开始抓取数据</button>
+                <button class="btn btn-md btn-success" id="start">开始抓取数据</button>
             </div>
 
             <div class="panel panel-success">
@@ -51,8 +51,9 @@
     </div>
 
 </div>
-<script src="libs/vue/dist/vue.min.js"></script>
+<script src="/libs/vue/dist/vue.min.js"></script>
 <script type="text/javascript" src="/libs/jquery/dist/jquery.min.js"></script>
+<script src="/crawler/index.js"></script>
 <script>
 
 </script>
