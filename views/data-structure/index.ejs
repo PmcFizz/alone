@@ -12,41 +12,15 @@
 <div class="container" id="main-contain">
     <div><p>1:将一个排列好的整型数组转化为二叉树</p></div>
     <p>11</p>
+    <code>
+        
+    </code>
 
 </div>
 
 <script src="libs/vue/dist/vue.min.js"></script>
 <script>
-    var arr = [1, 2, 3, 4, 5, 6, 7, 8]
-    function Node(data, left, right) {
-        this.data = data;
-        this.left = left;
-        this.right = right;
-    }
 
-    function BST() {
-        this.root = null;
-        this.inser = insert;
-    }
-
-    function insert(data, current) {
-        var n = new Node(data, null, null);
-        if (this.root == null) {
-            this.root = data;
-            return n;
-        } else {
-            var next = current.left;
-            next = n;
-            return next;
-        }
-    }
-
-    var global_current = new Node(null,null,null);
-    for (var i = 0; i < arr.length; i++) {
-        var item = arr[i];
-        global_current = insert(item,global_current);
-    }
-    console.log(BST)
 
 </script>
 </body>
