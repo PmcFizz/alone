@@ -63,6 +63,12 @@ router.get('/list', function (req, res, next) {
 });
 
 
+// 工作列表
+router.get('/list/work', function (req, res, next) {
+    res.render('list/work');
+});
+
+
 // 地图
 router.get('/map', function (req, res, next) {
     res.render('map/index');
