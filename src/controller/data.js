@@ -1,7 +1,8 @@
 /**
  * Created by Administrator on 2017/11/3.
- * 获取唐诗三百首 保存到数据库
+ * 获取文心雕龙 保存到数据库
  */
+
 let superagent = require("superagent");
 let cheerio = require("cheerio");
 let async = require("async");
@@ -34,6 +35,24 @@ mongoose.connect('mongodb://localhost/alone', function (err) {
     }
 });
 
+function getContent(href,title) {
+    superagent.get(href)
+        .set(setData)
+        .end((err, res) => {
+            let $ = cheerio.load(res.text);
+            let obj={
+                href,
+                title,
+                author:'刘勰',
+                tag:['文心雕龙'],
+                dynasty:'南朝'
+            }
+            obj.content=$(".contson").html();
+            let new_poetry = new Poetry(obj)
+            new_poetry.save();
+            // return content;
+        })
+}
 //程序主入口
 let mainFun = (target_url, selector) => {
     superagent.get(target_url)
@@ -46,25 +65,13 @@ let mainFun = (target_url, selector) => {
         let item = $(selectorArr[i]);
         let href = item.attr('href');
         let title = item.text();
-        let author=item.parent().text();
-        let tag=['唐朝','唐诗三百首','唐代'];
-        let dynasty='唐朝';
         if(href.indexOf('http://')!==0){
             href='http://so.gushiwen.org'+href;
         }
-        poetryArr.push(href,title);
-        let new_poetry = new Poetry({
-            title,
-            href,
-            author,
-            dynasty,
-            tag
-        })
-        new_poetry.save();
+        getContent(href,title);
         console.log("已保存到数据库^_^");
     }
-    // console.log(poetryArr);
 })
 };
 
-mainFun('http://www.gushiwen.org/gushi/tangshi.aspx', '.sons a');
+mainFun('http://www.gushiwen.org/guwen/wenxin.aspx', '.bookcont a');
