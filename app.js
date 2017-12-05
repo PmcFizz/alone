@@ -22,6 +22,13 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function(req,res,next){
+	 res.set('Access-Control-Allow-Origin', '*'); 
+	 res.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+	 res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
+	 next()
+})
+
 routes(app);
 
 // catch 404 and forward to error handler

@@ -9,6 +9,8 @@ let async = require("async");
 let mongoose = require('mongoose');
 let Schema = require('mongoose').Schema;
 
+var router = require('express').Router();
+
 const setData = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
     'Referrer': 'www.baidu.com',
@@ -101,5 +103,12 @@ let mainFun = (target_url, selector) => {
         })
 };
 
- mainFun('http://so.gushiwen.org/gushi/tangshi.aspx', '.sons a'); //获取唐诗三百
+//mainFun('http://so.gushiwen.org/gushi/tangshi.aspx', '.sons a'); //获取唐诗三百
 // mainFun('http://www.gushiwen.org/guwen/wenxin.aspx', '.bookcont a'); //获取文心雕龙
+
+// 项目目录
+router.get('/queryPoetry', function (req, res, next) {
+    res.render('index');
+});
+
+module.exports=router;

@@ -1,7 +1,7 @@
 let mongoose = require('mongoose');
 module.exports=function(app){
 
-    mongoose.connect('mongodb://localhost/net_data', function (err) {
+    mongoose.connect('mongodb://localhost/alone', function (err) {
         if (err) {
             console.log(err.message);
         } else {

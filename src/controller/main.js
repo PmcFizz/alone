@@ -275,4 +275,39 @@ router.post('/user/queryByDataTable', function (req, res) {
 });
 
 
+router.post('/queryPoetryData',function(req,res){
+    Poetry.find({'content':{$exists:true}},null,{limit:10},function (err,data) {
+        var newData=[];
+        data.forEach(function(item){
+            newData.push({name:item.title,id:item._id})
+        })
+        res.json({data:newData})
+    })
+});
+
+router.post('/queryPoetryById',function(req,res){
+    var id=req.body.id;
+    Poetry.find({_id:id},function (err,data) {
+        res.json({data:data[0]})
+    })
+});
+
+
+
+//阅读记录 表
+const readHistory = mongoose.model('readHistory', new Schema({
+    name: String,    //文本名
+    start: String,    //开始页
+    end: String,    //结束页
+    createTime: String,    //时间
+}));
+
+//保存阅读记
+router.post('/saveReadData',function(req,res){
+    var params=req.body;
+    var newRead=new readHistory(params);
+    newRead.save(function(err,data){
+        res.json({code:200,data:data});
+    })    
+});
 module.exports = router;
