@@ -276,7 +276,7 @@ router.post('/user/queryByDataTable', function (req, res) {
 
 
 router.post('/queryPoetryData',function(req,res){
-    Poetry.find({dynasty:'南朝'},null,{limit:10},function (err,data) {
+    Poetry.find({dynasty:'南朝'},null,{},function (err,data) {
         res.json({data:data})
     })
 });
