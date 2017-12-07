@@ -28,10 +28,10 @@ const Poetry = mongoose.model('poetry', new Schema({
     dynasty: String,    //朝代
     tag: Array      //标签
 }))
-
-mongoose.connect('mongodb://localhost/alone', function (err) {
+ 
+mongoose.connect('mongodb://127.0.0.1/alone', function (err) {
     if (err) {
-        console.log(err.message);
+        console.log("错误信息"+JSON.stringify(err));
     } else {
         console.log("^_^数据库已连接...请开始你的表演^_^")
     }
@@ -96,15 +96,15 @@ let mainFun = (target_url, selector) => {
                 if (href.indexOf('http://') !== 0) {
                     href = 'http://so.gushiwen.org' + href;
                 }
-                // getWXDLSContent(href, title);
-                getTS3HundredContent(href);
+                getWXDLSContent(href, title);
+                //getTS3HundredContent(href);
 
             }
         })
 };
 
-mainFun('http://so.gushiwen.org/gushi/tangshi.aspx', '.sons a'); //获取唐诗三百
-// mainFun('http://www.gushiwen.org/guwen/wenxin.aspx', '.bookcont a'); //获取文心雕龙
+//mainFun('http://so.gushiwen.org/gushi/tangshi.aspx', '.sons a'); //获取唐诗三百
+ mainFun('http://www.gushiwen.org/guwen/wenxin.aspx', '.bookcont a'); //获取文心雕龙
 
 // 项目目录
 // router.get('/queryPoetry', function (req, res, next) {

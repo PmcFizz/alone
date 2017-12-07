@@ -1,14 +1,21 @@
 let mongoose = require('mongoose');
-module.exports=function(app){
+module.exports = function (app) {
 
-    mongoose.connect('mongodb://localhost/alone', function (err) {
-        if (err) {
-            console.log(err.message);
-        } else {
-            console.log("^_^数据库已连接...请开始你的表演^_^")
-        }
+    var promise = mongoose.connect('mongodb://127.0.0.1/alone', {
+        useMongoClient: true,
+        socketTimeoutMS: 0,
+        keepAlive: true,
+        reconnectTries: 30
     });
+    promise.then(function (db) {
+        if(db){
+            console.log("服务器已链接")
+        }else{
+            console.log("数据库链接错误")
+        }
+
+    })
     //首页
-    app.use('/',require(CONTROLLERS+'/main'));
+    app.use('/', require(CONTROLLERS + '/main'));
 
 };

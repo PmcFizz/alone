@@ -275,13 +275,9 @@ router.post('/user/queryByDataTable', function (req, res) {
 });
 
 
-router.get('/queryPoetryData',function(req,res){
+router.post('/queryPoetryData',function(req,res){
     Poetry.find({dynasty:'南朝'},null,{limit:10},function (err,data) {
-        var newData=[];
-        data.forEach(function(item){
-            newData.push({name:item.title,id:item._id})
-        })
-        res.json({data:newData})
+        res.json({data:data})
     })
 });
 

@@ -1,51 +1,100 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>主页</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css"/>
-  <link rel='stylesheet' href='/stylesheets/style.css'/>
-  <base href="" target="_blank">
+    <title>主页</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <style type="text/css">
+        *{margin: 0;padding: 0}
+        .left_menu {
+            float: left;
+            border: 1px solid #ddd;
+            padding: 10px;
+            width: 234px;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        .left_menu .menu_ul {
+            list-style: none;
+            text-align: center;
+        }
+
+        .left_menu .menu_ul li.menu_li {
+            line-height: 30px;
+            height: 30px;
+            border-bottom: 1px solid #ddd;
+            font-size: 22px;
+            margin-top: 10px;
+            padding: 5px;
+        }
+
+        .left_menu .menu_ul li.menu_li:hover {
+            background-color: #ffeb3b
+        }
+
+        .left_menu .menu_ul li.menu_li.active {
+            background-color: #ffeb3b
+        }
+
+        .li_href {
+            display: block;
+            cursor: pointer;
+        }
+
+        .main_content {
+            float: left;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            margin-left: 50px;
+            border-radius: 4px;
+            min-height: 200px;
+            width: 40%;
+            float: left;
+            padding: 10px 20px;
+            text-align: left;
+            font-family: cursive;
+            font-size: large;
+        }
+    </style>
 </head>
 <body>
-
-<div class="container" id="main-contain">
-  <h1 class="text-center bg-success" style="border: 1px solid #ddd;color: #CCCC00;padding: 5px;border-radius:2px">积跬步,至千里.集小流,成江河</h1>
-
-  <div class="panel panel-primary">
-    <div class="panel-body text-center" style="margin: auto 0px">
-      <ul class="list-group col-md-12" style="max-height: 400px; text-align: center">
-        <li class="list-group-item col-md-3 menu-list-item text-center" v-for="item in menu"><a :href="item.href" >{{item.name}}</a></li>
-      </ul>
+<div id="app">
+    <div class="left_menu">
+        <ul class="menu_ul">
+            <li class="menu_li" v-for="item in menuArr">
+                <a class="li_href" @click="getContent(item._id)">{{item.title}}</a>
+            </li>
+        </ul>
     </div>
-  </div>
+    <div class="main_content">
+        <p v-html="content"></p>
+    </div>
 </div>
-
 <script src="libs/vue/dist/vue.min.js"></script>
+<script src="libs/axios/dist/axios.min.js"></script>
 <script>
-  var bodyVue=new Vue({
-      el:"#main-contain",
-      data:{
-          menu:[
-              {name:'目录展示',href:'/index',des:'',className:'',flag:''},
-              {name:'聊天室',href:'/chat/index',des:'',className:'',flag:''},
-              {name:'抓包',href:'/spider/index',des:'',className:'',flag:''},
-              {name:'列表分页',href:'/list/index',des:'',className:'',flag:''},
-              {name:'地图',href:'/map/index',des:'',className:'',flag:''},
-              {name:'Echart',href:'/echart/index',des:'',className:'',flag:''},
-              {name:'Canvas',href:'/canvase/index',des:'',className:'',flag:''},
-              {name:'Mongodb',href:'/mongodb/index',des:'',className:'',flag:''},
-              {name:'游戏',href:'',des:'/game/index',className:'',flag:''},
-              {name:'数据结构',href:'/data-structure/index',des:'',className:'',flag:''},
-              {name:'算法题',href:'/algorithm/index',des:'',className:'',flag:''},
-              {name:'设计模式',href:'/design-pattern/index',des:'',className:'',flag:''},
-              {name:'ES6',href:'/es6/index',des:'',className:'',flag:''},
-              {name:'VUE',href:'/vue/index',des:'',className:'',flag:''},
-              {name:'Music',href:'/music/index',des:'',className:'',flag:''}]
-      }
-  })
-
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            menuArr: [],
+            content: '',
+        },
+        created: function () {
+            let _this = this;
+            axios.post('/queryPoetryData', {}).then((res) => {
+                _this.menuArr = res.data.data;
+            })
+        },
+        methods: {
+            getContent(id) {
+                let _this = this;
+                axios.post('/queryPoetryById', {id: id}).then((res) => {
+                    _this.content = res.data.data.content
+                })
+            }
+        }
+    })
 </script>
 </body>
 </html>
