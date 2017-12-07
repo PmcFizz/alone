@@ -103,12 +103,12 @@ let mainFun = (target_url, selector) => {
         })
 };
 
-//mainFun('http://so.gushiwen.org/gushi/tangshi.aspx', '.sons a'); //获取唐诗三百
+mainFun('http://so.gushiwen.org/gushi/tangshi.aspx', '.sons a'); //获取唐诗三百
 // mainFun('http://www.gushiwen.org/guwen/wenxin.aspx', '.bookcont a'); //获取文心雕龙
 
 // 项目目录
-router.get('/queryPoetry', function (req, res, next) {
-    res.render('index');
-});
-
-module.exports=router;
+// router.get('/queryPoetry', function (req, res, next) {
+//     res.render('index');
+// });
+//
+// module.exports=router;
