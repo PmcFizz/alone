@@ -1,1 +1,0 @@
-cd E:\GitRes\snake node bin/www
