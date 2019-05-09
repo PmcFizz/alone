@@ -1,0 +1,1 @@
+cd E:\Main_Pro\FUN\upblog & node shua.js
