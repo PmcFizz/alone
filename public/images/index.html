@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>12</title>
+</head>
+<body>
+    <ul>
+        <li>
+           <span style="width: 500px;">Driver</span>
+           <input type="text" id="driver" placeholder="Driver" />
+        </li>
+        <li>
+           <span style="width: 500px;">Url</span>
+           <input type="text" id="url" placeholder="url" />
+        </li>
+        <li>
+           <span>Username</span>
+           <input type="text" id="username" placeholder="username" />
+        </li>
+        <li>
+           <span>Password</span>
+           <input type="text" id="password" placeholder="password" />
+        </li>
+        <li>
+           <span>Database</span>
+           <input type="text" id="database" placeholder="database" />
+        </li>
+     </ul>
+
+
+
+
+
+
+     <li>
+        <span style="width: 500px;">数据映射文件结尾字符</span>
+        <input type="text" id="xmlLast" placeholder="默认Mapper" />
+     </li>
+     <li>
+        <span style="width: 500px;">实体类结尾字符</span>
+        <input type="text" id="modelLast" placeholder="默认PO" />
+     </li>
+     <li>
+        <span>Service结尾字符</span>
+        <input type="text" id="serviceLast" placeholder="默认Service" />
+     </li>
+     <li>
+        <span>Service实现类结尾字符</span>
+        <input type="text" id="serviceImplLast " placeholder="默认ServiceImpl" />
+     </li>
+     <li>
+        <span>Controller结尾字符</span>
+        <input type="text" id="controller" placeholder="默认Controller" />
+     </li>
+     <li>
+        <span>生成路径</span>
+        <input type="text" id="generPath" placeholder="默认D://temp" />
+     </li>
+     <li>
+        <div id="generButton" class="btn btn-primary">生成</div>
+     </li>
+<div id="app">
+	<todo-item></todo-item>
+</div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript">
+
+Vue.component('todo-item', {
+  template: '<li>11111111</li>'
+})
+
+var app7 = new Vue({
+  el: '#app',
+  data: {
+    groceryList: [
+      { id: 0, text: '蔬菜' },
+      { id: 1, text: '奶酪' },
+      { id: 2, text: '随便其它什么人吃的东西' }
+    ]
+  }
+})
+</script>
+</html>
