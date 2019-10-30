@@ -17,7 +17,7 @@
     "express": "~4.15.5",
     "express-session": "^1.15.6",
     "install": "^0.10.1",
-    "mongoose": "^4.13.6",
+    "mongoose": "^5.7.7",
     "morgan": "~1.9.0",
     "mpromise": "^0.5.5",
     "opn": "^5.1.0",
